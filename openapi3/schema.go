@@ -818,7 +818,7 @@ func (schema *Schema) visitSetOperations(settings *schemaValidationSettings, val
 		if v == nil {
 			return foundUnresolvedRef(ref.Ref)
 		}
-		oldfailfast, settings.failfast = settings.failfast, true
+		// oldfailfast, settings.failfast = settings.failfast, true
 		if err := v.visitJSON(settings, value); err == nil {
 			if oldfailfast {
 				return errSchema
@@ -840,7 +840,7 @@ func (schema *Schema) visitSetOperations(settings *schemaValidationSettings, val
 			if v == nil {
 				return foundUnresolvedRef(item.Ref)
 			}
-			oldfailfast, settings.failfast = settings.failfast, true
+			// oldfailfast, settings.failfast = settings.failfast, true
 			if err = v.visitJSON(settings, value); err == nil {
 				ok++
 			}
@@ -866,7 +866,7 @@ func (schema *Schema) visitSetOperations(settings *schemaValidationSettings, val
 			if v == nil {
 				return foundUnresolvedRef(item.Ref)
 			}
-			oldfailfast, settings.failfast = settings.failfast, true
+			// oldfailfast, settings.failfast = settings.failfast, true
 			if err := v.visitJSON(settings, value); err == nil {
 				ok = true
 				break
@@ -890,7 +890,7 @@ func (schema *Schema) visitSetOperations(settings *schemaValidationSettings, val
 		if v == nil {
 			return foundUnresolvedRef(item.Ref)
 		}
-		oldfailfast, settings.failfast = settings.failfast, false
+		// oldfailfast, settings.failfast = settings.failfast, false
 		if err := v.visitJSON(settings, value); err != nil {
 			if oldfailfast {
 				return errSchema
@@ -1401,9 +1401,6 @@ func (schema *Schema) visitJSONObject(settings *schemaValidationSettings, value 
 			}
 			if s := schema.Properties[k]; s != nil && s.Value.WriteOnly && settings.asrep {
 				continue
-			}
-			if settings.failfast {
-				return errSchema
 			}
 			err := markSchemaErrorKey(&SchemaError{
 				Value:       value,

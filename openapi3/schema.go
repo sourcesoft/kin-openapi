@@ -834,13 +834,14 @@ func (schema *Schema) visitSetOperations(settings *schemaValidationSettings, val
 
 	if v := schema.OneOf; len(v) > 0 {
 		ok := 0
+		var err error
 		for _, item := range v {
 			v := item.Value
 			if v == nil {
 				return foundUnresolvedRef(item.Ref)
 			}
 			oldfailfast, settings.failfast = settings.failfast, true
-			if err := v.visitJSON(settings, value); err == nil {
+			if err = v.visitJSON(settings, value); err == nil {
 				ok++
 			}
 			settings.failfast = oldfailfast
@@ -849,11 +850,12 @@ func (schema *Schema) visitSetOperations(settings *schemaValidationSettings, val
 			if settings.failfast {
 				return errSchema
 			}
-			return &SchemaError{
-				Value:       value,
-				Schema:      schema,
-				SchemaField: "oneOf",
-			}
+			return err
+			// return &SchemaError{
+			// 	Value:       value,
+			// 	Schema:      schema,
+			// 	SchemaField: "oneOf",
+			// }
 		}
 	}
 

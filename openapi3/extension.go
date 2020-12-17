@@ -1,7 +1,7 @@
 package openapi3
 
 import (
-	"github.com/getkin/kin-openapi/jsoninfo"
+	"github.com/sourcesoft/kin-openapi/jsoninfo"
 )
 
 // ExtensionProps provides support for OpenAPI extensions.

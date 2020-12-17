@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/getkin/kin-openapi/jsoninfo"
 	"github.com/go-openapi/jsonpointer"
+	"github.com/sourcesoft/kin-openapi/jsoninfo"
 )
 
 type Links map[string]*LinkRef

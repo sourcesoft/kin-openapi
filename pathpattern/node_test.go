@@ -3,7 +3,7 @@ package pathpattern_test
 import (
 	"testing"
 
-	"github.com/getkin/kin-openapi/pathpattern"
+	"github.com/sourcesoft/kin-openapi/pathpattern"
 )
 
 func TestPatterns(t *testing.T) {

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/getkin/kin-openapi/openapi3"
+	"github.com/sourcesoft/kin-openapi/openapi3"
 )
 
 var (
